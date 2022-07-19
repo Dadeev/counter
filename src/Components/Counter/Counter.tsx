@@ -17,8 +17,8 @@ export const Counter = () => {
         <div className={s.main}>
             <span className={s.nums}>{nums === 5 ? <span className={s.counter}>{nums}</span> : nums}</span>
            <div className={s.buttons}>
-               <button className={s.inc} onClick={incrementHandler} disabled={nums === 5 ? true : false}>inc</button>
-               <button className={s.reset}  onClick={resetHandler} disabled={nums === 0 ? true : false}>reset</button>
+               <button className={s.inc} onClick={incrementHandler} disabled={nums === 5}>inc</button>
+               <button className={s.reset}  onClick={resetHandler} disabled={nums === 0}>reset</button>
            </div>
         </div>
     );
