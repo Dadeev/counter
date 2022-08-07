@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 
 type InputType = {
-    callBack: (value: string) => void
+    callBack: (maxValue: string) => void
     name: string
     className: string
 }

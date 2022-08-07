@@ -1,16 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Counter.module.css'
 import {Button} from "../../Button";
 
 type Counter = {
     maxValue: number
-    setMaxValue: (maxValue: number) => void
     minValue: number
-    setMinValue: (minValue: number) => void
 }
 
 export const Counter = (props: Counter) => {
-    const [nums, setNums] = useState<number>(0)
+    const [nums, setNums] = useState<number>(props.minValue)
+
+    useEffect(() => {
+        setNums(props.minValue)
+    },[props.minValue])
+
     const incrementHandler = () => {
         if (nums !== props.maxValue) {
             setNums(nums + 1)
@@ -18,7 +21,6 @@ export const Counter = (props: Counter) => {
     }
     const resetHandler = () => {
         setNums(0)
-
     }
 
     return (
@@ -30,7 +32,8 @@ export const Counter = (props: Counter) => {
                 : nums}
             </span>
             <div className={s.buttons}>
-                <Button name={'inc'} callBack={incrementHandler} nums={nums} className={s.btns} maxValue={props.maxValue}/>
+                <Button name={'inc'} callBack={incrementHandler} nums={nums} className={s.btns}
+                        maxValue={props.maxValue}/>
                 <Button name={'reset'} callBack={resetHandler} nums={nums} className={s.btns}/>
             </div>
         </div>
