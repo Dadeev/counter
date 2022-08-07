@@ -2,8 +2,9 @@ import React from 'react';
 
 type ButtonType = {
     name: string
+    maxValue?: number
     callBack: () => void
-    nums: number
+    nums?: number
     className?: string
 }
 
@@ -14,7 +15,7 @@ export const Button = (props: ButtonType) => {
     return (
         <button className={props.className}
                 onClick={onClickHandler}
-                disabled={props.name === 'inc' ? props.nums === 5 : props.nums === 0}>
+                disabled={props.name === 'inc' ? props.nums === props.maxValue : props.nums === 0}>
             {props.name}</button>
     );
 };

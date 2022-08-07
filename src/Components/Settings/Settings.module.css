@@ -1,0 +1,29 @@
+.main {
+    display: grid;
+    justify-content: center;
+    width: 220px;
+    height: 160px;
+    background-color: skyblue;
+    border: 3px solid royalblue;
+}
+
+.input {
+    width: 70px;
+    height: 26px;
+    border: 1px solid royalblue;
+}
+
+.maxValue {
+
+}
+
+.minValue {
+
+}
+
+.btnSet {
+    width: 100px;
+    height: 30px;
+    border: 1px solid royalblue;
+    cursor: pointer;
+}
