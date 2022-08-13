@@ -5,8 +5,8 @@ import {Input} from "../Input";
 
 type SettingsType = {
     maxValue: number
-    setMaxValue: (maxValue: number) => void
     minValue: number
+    setMaxValue: (maxValue: number) => void
     setMinValue: (minValue: number) => void
     cb: () => void
 }
@@ -14,20 +14,21 @@ type SettingsType = {
 export const Settings = (props: SettingsType) => {
     const setCallBackHandler = () => {
         props.cb();
-        console.log('hey')
     }
     const onMaxHandler = (maxValue: string) => {
-        props.setMaxValue(Number(maxValue))
+        props.setMaxValue(+maxValue)
     }
 
     const onMinHandler = (minValue: string) => {
-        props.setMinValue(Number(minValue))
+        props.setMinValue(+minValue)
     }
     return (
         <div className={s.main}>
             <Input className={s.input} name={'max value:'} callBack={onMaxHandler}/>
             <Input className={s.input} name={'min value:'} callBack={onMinHandler}/>
-            <Button name={'set'} callBack={setCallBackHandler} className={s.btnSet}/>
+            <Button minValue={props.minValue} maxValue={props.maxValue} name={'set'} callBack={setCallBackHandler}
+                    className={s.btnSet} setMaxValue={props.setMaxValue}
+                    setMinValue={props.setMinValue}/>
         </div>
     );
 };

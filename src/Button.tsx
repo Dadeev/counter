@@ -2,16 +2,34 @@ import React from 'react';
 
 type ButtonType = {
     name: string
-    maxValue?: number
     callBack: () => void
+    minValue?: number
+    maxValue?: number
     nums?: number
     className?: string
+    setMaxValue?: (maxValue: number) => void
+    setMinValue?: (minValue: number) => void
 }
 
 export const Button = (props: ButtonType) => {
     const onClickHandler = () => {
-        props.callBack()
+        if (props.name === 'set') {
+            localStorage.setItem('counterMinValue', JSON.stringify(props.minValue))
+            localStorage.setItem('counterMaxValue', JSON.stringify(props.maxValue))
+            let minValueAsStr = localStorage.getItem('counterMinValue')
+            let maxValueAsStr = localStorage.getItem('counterMaxValue')
+            if (minValueAsStr && maxValueAsStr) {
+                let newMinValue = JSON.parse(minValueAsStr)
+                let newMaxValue = JSON.parse(maxValueAsStr)
+                props.setMinValue!(newMinValue)
+                props.setMaxValue!(newMaxValue)
+            }
+            props.callBack()
+        } else {
+            props.callBack()
+        }
     }
+
     return (
         <button className={props.className}
                 onClick={onClickHandler}

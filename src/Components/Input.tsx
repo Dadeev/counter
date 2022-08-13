@@ -13,7 +13,9 @@ export const Input = (props: InputType) => {
     return (
         <>
             <span>{props.name}</span>
-            <input onChange={onChangeHandler} className={props.className} type={"number"}/>
+            <input onChange={onChangeHandler}
+                   className={props.className}
+                   type={"number"}/>
         </>
     );
 };
